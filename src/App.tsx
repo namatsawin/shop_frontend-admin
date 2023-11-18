@@ -8,23 +8,27 @@ import LoaginPage from "./pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { useAppSelector } from "./hooks/store.hook";
 import { selectAuth } from "./store/auth/state";
+import BaseToaster from "@/components/BaseToast/BaseToast";
 
 function App() {
   const auth = useAppSelector(selectAuth)
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<LoaginPage />} />
-        <Route 
-          path="/" 
-          element={<PrivateRoute element={<AppLayout/>} isAuthenticated={auth} />}
-        >
-          <Route index element={<DashbordPage />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoaginPage />} />
+          <Route 
+            path="/" 
+            element={<PrivateRoute element={<AppLayout/>} isAuthenticated={auth} />}
+          >
+            <Route index element={<DashbordPage />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <BaseToaster/>
+    </>
   )
 }
 

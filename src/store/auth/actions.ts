@@ -1,13 +1,13 @@
 import { Dispatch } from "redux"
-import { setAuth } from "."
 
-export function authenticate()  {
-  return (dispatch: Dispatch) => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        dispatch(setAuth({ test: 1 }))
-        resolve(true)
-      }, 1000)
-    })
+import { setAuth } from "."
+import { IThunkAction } from ".."
+import { LoginPresenter } from "@/presenters/login.presenter"
+
+export function authenticate(data: LoginPresenter): IThunkAction<Promise<void>> {
+  return async (dispatch: Dispatch, _, { api }) => {
+    await new Promise(r => setTimeout(r, 1000))
+    const result = await api.admin.authenticate(data)
+    dispatch(setAuth(result))
   }
 }
