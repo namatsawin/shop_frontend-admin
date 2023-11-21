@@ -1,14 +1,14 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import AppLayout from '@/layouts/AppLayout'
-import NoPage from "@/pages/ErrorPages/NoPage";
-import DashbordPage from "./pages/DashbordPage/DashbordPage";
-import LoaginPage from "./pages/LoginPage/LoginPage";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { useAppSelector } from "./hooks/store.hook";
-import { selectAuth } from "./store/auth/state";
-import BaseToaster from "@/components/BaseToast/BaseToast";
+import AppLayout from '@/commons/layouts/AppLayout'
+import NoPage from "@/commons/pages/ErrorPages/NoPage";
+import DashbordPage from "./commons/pages/DashbordPage/DashbordPage";
+import LoaginPage from "./modules/login/page/Index";
+import PrivateRoute from "./commons/components/PrivateRoute/PrivateRoute";
+import { useAppSelector } from "./commons/hooks/store.hook";
+import { selectAuth } from "./modules/login/reducer/state";
+import BaseToaster from "@/commons/components/BaseToast/BaseToast";
 
 function App() {
   const auth = useAppSelector(selectAuth)

@@ -23,13 +23,10 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@constants/*": ["./src/constants/*"],
       "@styles/*": ["./src/styles/*"],
       "@assets/*": ["./src/assets/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@components/*": ["./src/components/*"],
-      "@containers/*": ["./src/containers/*"],
-      "@layouts/*": ["./src/layouts/*"],
+      "@commons/*": ["./src/commons/*"],
+      "@modules/*": ["./src/modules/*"],
     }
   },
   "include": ["src"],

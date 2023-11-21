@@ -1,13 +1,13 @@
 import { Action, ThunkDispatch, configureStore } from '@reduxjs/toolkit'
 
-import auth from './auth'
-import { APIService } from '@/services/api/api.service'
+import login from '../modules/login/reducer'
+import { APIService } from '@/commons/services/api/api.service'
 
 interface IExtraThunkArg { api: APIService }
 
 export const store = configureStore({
   reducer: {
-    auth
+    login
   },
   middleware: getDefaultMiddleware => {
     const extraArgument: IExtraThunkArg = {

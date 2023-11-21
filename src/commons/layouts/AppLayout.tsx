@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
-import Header from "@/components/Header/Header";
-import Sidebar from "@/constants/Sidebar";
+import Header from "@/commons/components/Header/Header";
+import Sidebar from "@/commons/components/Sidebar/Sidebar";
 
 export function AppLayout () {
   return (

@@ -4,13 +4,15 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import toast from "react-hot-toast";
 
-import { LoginPresenter } from "@/presenters/login.presenter";
+import { IRequestLogin } from "@/commons/types/api/admin-api";
 
-import BaseButton from "@/components/BaseButton/BaseButton";
-import FormControl from "@/components/FormControl/FormControl";
+import BaseButton from "@/commons/components/BaseButton/BaseButton";
+import FormControl from "@/commons/components/FormControl/FormControl";
 
-interface Props extends React.FormHTMLAttributes<HTMLFormElement> {
-  submit: (data: LoginPresenter) => Promise<void>
+export interface ILoginFormBody extends IRequestLogin {}
+
+export interface ILoginFormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+  submit: (data: ILoginFormBody) => Promise<void>
 }
 
 const schema = yup
@@ -20,9 +22,9 @@ const schema = yup
   })
   .required()
 
-function LoginForm({ submit, ...rest }: Props) {
+function LoginForm({ submit, ...rest }: ILoginFormProps) {
   const [loading, setLoading] = useState(false)
-  const { handleSubmit, control, formState: { errors } } = useForm<LoginPresenter>({
+  const { handleSubmit, control, formState: { errors } } = useForm<ILoginFormBody>({
     resolver: yupResolver(schema),
   });
 

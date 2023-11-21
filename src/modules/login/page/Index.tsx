@@ -1,17 +1,16 @@
 import { useNavigate } from "react-router-dom";
 
-import { useAppDispatch } from "@/hooks/store.hook";
-import { authenticate } from "@/store/auth/actions";
+import { useAppDispatch } from "@/commons/hooks/store.hook";
+import { login } from "@/modules/login/reducer/thunk-actions";
 
-import LoginForm from "@/components/Forms/LoginForm/LoginForm";
-import { LoginPresenter } from "@/presenters/login.presenter";
+import LoginForm, { ILoginFormBody } from "@/modules/login/forms/LoginForm/LoginForm";
 
 function LoaginPage() {
   const appDispatch = useAppDispatch()
   const navigate = useNavigate()
  
-  const onLogin = async (data: LoginPresenter) => {
-    await appDispatch(authenticate(data)), 
+  const onLogin = async (data: ILoginFormBody) => {
+    await appDispatch(login(data)), 
     navigate('/')
   }
 
